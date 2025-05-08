@@ -41,6 +41,7 @@ namespace ProjetoColaborador.Data
         private static void addServices(IServiceCollection service)
         {
             service.AddScoped<IFindColaboradorService, FindColaboradorService>();
+            service.AddScoped<IColaboradorCreateService, ColaboradorCreateService>();
         }
     }
 }

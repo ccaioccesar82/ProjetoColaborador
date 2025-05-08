@@ -34,4 +34,31 @@ body {
 #input-texto {
 
     display: block;
+
+}
+
+dialog{
+
+    border:none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 /.3);
+    padding: 20px;
+
+}
+
+#label-cargo {
+
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+#container {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+#create-btn{
+
+    max-width: 200px;
 }

@@ -19,6 +19,7 @@ namespace ProjetoColaborador.Data.Repositories
         {
             await _dbContext.Colaboradores.AddAsync(colaborador);
 
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task UpdateColaborador(Guid colaboradorId, Colaborador colaborador)

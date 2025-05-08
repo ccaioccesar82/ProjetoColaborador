@@ -25,5 +25,14 @@ namespace ProjetoColaborador.Services
 
 
 
+        public async Task<IList<Colaborador>?> FindWithName(string name)
+        {
+
+
+            return await _repository.SearchColaboradorByName(name);
+
+
+        }
+
     }
 }

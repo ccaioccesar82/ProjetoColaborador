@@ -7,6 +7,6 @@ namespace ProjetoColaborador.Models.Entities
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Telefone { get; set; } = string.Empty;
-        public CargosId CargoId { get; set; }
+        public string CargoId { get; set; } = string.Empty;
     }
 }
