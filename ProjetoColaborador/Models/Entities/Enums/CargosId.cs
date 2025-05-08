@@ -1,6 +1,6 @@
 ﻿namespace ProjetoColaborador.Models.Entities.Enums
 {
-    public enum Cargos: int
+    public enum CargosId: int
     {
         Programador = 0,
         Designer = 1,
