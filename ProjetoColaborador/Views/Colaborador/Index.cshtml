@@ -3,30 +3,24 @@
 
 <table id="tabela-colaborador" class="table table-striped table-hover">
 	<thead>
-
 		<tr>
-
 			<th>
 				Nome
-
 			</th>
 			<th>
 				Email
-
 			</th>
 			<th>
 				Telefone
-
 			</th>
 			<th>Cargo</th>
-
 		</tr>
 
 	</thead>
 	<tbody>
 		@foreach(var item in Model)
 		{
-			<tr>
+			<tr onclick = openModal()>
 				<td>
 					@Html.DisplayFor(Model => item.Name)
 				</td>
@@ -43,9 +37,34 @@
 			</tr>
 
 		}
-
-
-		</tbody>
-
-
+	</tbody>
 	</table>
+
+
+	<dialog id="caixa-modal">
+	<form>
+		
+		<label>Nome:</label>
+		<input id="input-texto" type="text"/>
+
+		<label>Email</label>
+		<input id="input-texto" type="email"/>
+
+		<label>Telefone</label>
+		<input id="input-texto"  type="text"/>
+
+		<input type="radio" value="Programador" name="cargo"/>
+		<label>Programador</label><br/>
+
+		<input type="radio" value="Designer" name="cargo" />
+		<label>Designer</label><br/>
+
+		<input type="radio" value="Comercial" name="cargo" />
+		<label>Comercial</label><br/>
+
+		<input type="radio" value="TechLeader" name="cargo" />
+		<label>TechLeader</label><br/>	
+	
+		<button type="submit">Editar</button>
+	</form>
+	</dialog>

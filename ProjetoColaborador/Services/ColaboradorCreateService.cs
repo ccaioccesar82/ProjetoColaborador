@@ -15,12 +15,5 @@ namespace ProjetoColaborador.Services
         }
 
 
-        public async Task Execute(CreateColaboradorRequestJson requestJson)
-        {
-
-
-      
-        }
-
     }
 }
