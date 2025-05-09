@@ -10,11 +10,15 @@ namespace ProjetoColaborador.Controllers
 
         private readonly IFindColaboradorService _findColaboradorService;
         private readonly IColaboradorCreateService _colaboradorCreateService;
+        private readonly IEditColaboradorService _editColaboradorService;
 
-        public ColaboradorController(IFindColaboradorService findColaboradorService, IColaboradorCreateService colaboradorCreateService)
+
+        public ColaboradorController(IFindColaboradorService findColaboradorService, IColaboradorCreateService colaboradorCreateService
+            ,IEditColaboradorService editColaboradorService)
         {
             _findColaboradorService = findColaboradorService;
             _colaboradorCreateService = colaboradorCreateService;
+            _editColaboradorService = editColaboradorService;
         }
 
         public async Task<IActionResult> Index()
@@ -38,20 +42,20 @@ namespace ProjetoColaborador.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SearchByName(string name)
+        public async Task<IActionResult> Edit(Colaborador colaborador)
         {
-            
-            ViewData["ColaboradorFiltrado"] = await _findColaboradorService.FindWithName(name);
+            try
+            {
+                await _editColaboradorService.Execute(colaborador);
 
-            return RedirectToAction("Index");
-        }
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
 
+                return NotFound(ex.Message);
 
-
-        public async Task<IActionResult> Update()
-        {
-
-            return RedirectToAction("Index");
+            }
         }
     }
 }

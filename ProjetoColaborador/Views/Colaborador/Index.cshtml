@@ -9,25 +9,29 @@
 
 }
 <div id="container">
-
-	<button id="create-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick= openModal()>
+	<div class="buttons">
+		<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick=openModal()>
 		Criar colaborador
 	</button>
-
-	<form asp-action="SearchByName" method="post">
-		<div class="input-group">
-			<input type="search" name="name" class="form-control rounded" placeholder="Escreva o nome completo do colaborador" aria-label="Search" aria-describedby="search-addon" />
-			<button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>Buscar</button>
-		</div>
-	</form>
+		<button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModalCenter" onclick=openModalEdit()>
+		Editar colaborador
+	</button>
+	</div>
 
 
+	<div class="form-outline" data-mdb-input-init>
+		<input id="search-input" type="search" class="form-control" placeholder="Buscar colaborador" aria-label="Search" />
+	</div>
 </div>
 
 
 <table id="tabela-colaborador" class="table table-striped table-hover">
 	<thead>
 		<tr>
+			<th>
+				Id
+			</th>
+
 			<th>
 				Nome
 			</th>
@@ -44,42 +48,18 @@
 
 	<tbody>
 
-		@{
-			if (colaboradoresFiltrados != null)
-			{
-
-				foreach (var item in colaboradoresFiltrados)
-				{
-					<tr onclick=openModal()>
-						<td>
-							@Html.DisplayFor(Model => item.Name)
-						</td>
-						<td>
-							@Html.DisplayFor(Model => item.Email)
-						</td>
-						<td>
-							@Html.DisplayFor(Model => item.Telefone)
-						</td>
-						<td>
-							@Html.DisplayFor(Model => item.CargoId)
-						</td>
-
-					</tr>
-
-				}
-
-			}
-			
-			else
-			{
-
-				if (colaboradores != null)
+		
+			@{	if (colaboradores != null)
 				{
 
 					foreach (var item in colaboradores)
 					{
-						<tr onclick=openModal()>
-							<td>
+
+						<tr class="colabs">
+						<td>
+							@Html.DisplayFor(Model => item.Id)
+						</td>
+							<td class="colaborador name">
 								@Html.DisplayFor(Model => item.Name)
 							</td>
 							<td>
@@ -99,26 +79,29 @@
 			
 			}
 
-		}
+		
 	</tbody>
 	</table>
 
 
 	<dialog id="caixa-modal">
-	<form asp-action="Create" method="post">
+	<form asp-action="Create" method="post" id="form-create" >
+
+	<span id="span-create">Todos os campos devem ser preenchidos</span>
+
 		<label>Nome:</label>
-		<input id="input-texto" type="text" asp-for="Name"/>
+		<input id="input-texto" type="text" asp-for="Name" class="inputs required"/>
 
 		<label>Email</label>
-		<input id="input-texto" type="email" asp-for="Email"/>
+		<input id="input-texto" type="email" asp-for="Email" class="inputs required"/>
 
 		<label>Telefone</label>
-		<input id="input-texto"  type="text" asp-for="Telefone"/>
+		<input id="input-texto" type="text" asp-for="Telefone" class="inputs required"/>
 		<label id="label-cargo">Cargo desempenhado: </label>
 
 		<br>
 
-		<input type="radio" name="CargoId" value="0"> Programador<br>
+		<input type="radio" name="CargoId" value="0" checked> Programador<br>
 
 		<input type="radio" name="CargoId" value="1"> Designer<br>
 
@@ -129,6 +112,44 @@
 		<br>
 
 
-		<button id="btn-editar" type="submit">Criar</button>
+		<button id="submit-create" type="submit">Criar</button>
 	</form>
 	</dialog>
+
+
+
+
+<dialog id="caixa-modal-edit">
+	<form asp-action="Edit" method="post" id="form-edit">
+		<span id="span-edit">Todos os campos devem ser preenchidos</span>
+
+
+		<label>Id do colaborador:</label>
+		<input id="input-texto" type="text" asp-for="Id" class="inputs edits" />
+
+		<label>Nome:</label>
+		<input id="input-texto" type="text" asp-for="Name" class="inputs edits" />
+
+		<label>Email</label>
+		<input id="input-texto" type="email" asp-for="Email" class="inputs edits" />
+
+		<label>Telefone</label>
+		<input id="input-texto" type="text" asp-for="Telefone" class="inputs edits" />
+		<label id="label-cargo">Cargo desempenhado: </label>
+
+		<br>
+
+		<input type="radio" name="CargoId" value="0" checked> Programador<br>
+
+		<input type="radio" name="CargoId" value="1"> Designer<br>
+
+		<input type="radio" name="CargoId" value="2"> Comercial<br>
+
+		<input type="radio" name="CargoId" value="3"> TechLeader<br>
+
+		<br>
+
+
+		<button id="btn-editar" type="submit">Editar</button>
+	</form>
+</dialog>

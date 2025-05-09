@@ -22,13 +22,11 @@ namespace ProjetoColaborador.Data.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateColaborador(Guid colaboradorId, Colaborador colaborador)
+        public async Task UpdateColaborador(Colaborador colaborador)
         {
-            var userResult = await _dbContext.Colaboradores.SingleOrDefaultAsync(c => c.Id == colaboradorId);
+          _dbContext.Colaboradores.Update(colaborador);
 
-            userResult = colaborador;
-
-            _dbContext.Colaboradores.Update(userResult);
+            await _dbContext.SaveChangesAsync();
         }
 
     }
