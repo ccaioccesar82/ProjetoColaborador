@@ -1,0 +1,51 @@
+﻿@model ProjetoColaborador.Models.Entities.Colaborador;
+
+
+
+<div class="modal fade" id="EditColaborador-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Colaborador</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit" method="post" class="myform-edit">
+                    <span id="span-validation-edit">Todos os campos precisam ser preenchidos</span>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control inputEdit" id="recipient-name" value="@Model.Id" asp-for="Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Nome:</label>
+                        <input type="text" class="form-control inputEdit" id="recipient-name" value="@Model.Name" asp-for="Name">
+                    </div>  
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Email:</label>
+                        <input type="email" class="form-control inputEdit" id="recipient-name" value="@Model.Email" asp-for="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Telefone:</label>
+                        <input type="text" class="form-control inputEdit" id="recipient-name" value="@Model.Telefone" asp-for="Telefone">
+                    </div>
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Cargo:</label>
+
+                    <select id="select-modal" class="form-select" aria-label="Default select example" asp-for="CargoId">
+                        <option value="0" >Programador</option>
+                        <option value="1">Designer</option>
+                        <option value="2">Comercial</option>
+                        <option value="3">TechLeader</option>
+
+                    </select>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

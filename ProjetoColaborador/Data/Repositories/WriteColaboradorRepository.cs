@@ -24,6 +24,8 @@ namespace ProjetoColaborador.Data.Repositories
 
         public async Task UpdateColaborador(Colaborador colaborador)
         {
+
+
           _dbContext.Colaboradores.Update(colaborador);
 
             await _dbContext.SaveChangesAsync();

@@ -17,22 +17,31 @@ namespace ProjetoColaborador.Services
 
         }
 
-        public async Task Execute(Colaborador colaborador)
+        public async Task Execute(Colaborador colaboradorRequest)
         {
-           var colaboradorSearched = await Validate(colaborador.Id);
 
-            colaboradorSearched.Name = colaborador.Name;
-            colaboradorSearched.Email = colaborador.Email;
-            colaboradorSearched.Telefone = colaborador.Telefone;
-            colaboradorSearched.CargoId = colaborador.CargoId;
+            var colaboradorResult = await Validate(colaboradorRequest);
 
-            await _writeColaboradorRepository.UpdateColaborador(colaboradorSearched);
+            colaboradorResult.Name = colaboradorRequest.Name;
+            colaboradorResult.Email = colaboradorRequest.Email;
+            colaboradorResult.Telefone = colaboradorRequest.Telefone;
+            colaboradorResult.CargoId = colaboradorRequest.CargoId;
+
+            await _writeColaboradorRepository.UpdateColaborador(colaboradorResult);
 
         }
 
-        private async Task<Colaborador> Validate(long id)
+        private async Task<Colaborador> Validate(Colaborador colaboradorRequest)
         {
-           var result = await _readColaboradorRepository.FindColaboradorById(id);
+
+            if(string.IsNullOrWhiteSpace(colaboradorRequest.Name) || string.IsNullOrWhiteSpace(colaboradorRequest.Email) ||
+                string.IsNullOrWhiteSpace(colaboradorRequest.Telefone))
+            {
+                throw new Exception("Todos os campos são obrigatórios");
+
+            }
+
+           var result = await _readColaboradorRepository.FindColaboradorById(colaboradorRequest.Id);
 
             if (result == null)
             {

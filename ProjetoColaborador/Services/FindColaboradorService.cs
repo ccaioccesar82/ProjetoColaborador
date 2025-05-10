@@ -1,4 +1,5 @@
-﻿using ProjetoColaborador.Data.Repositories.Interfaces;
+﻿using ProjetoColaborador.Data.Repositories;
+using ProjetoColaborador.Data.Repositories.Interfaces;
 using ProjetoColaborador.Models.Entities;
 using ProjetoColaborador.Services.ServicesInterfaces;
 
@@ -7,12 +8,12 @@ namespace ProjetoColaborador.Services
     public class FindColaboradorService: IFindColaboradorService
     {
 
-        private readonly IReadColaboradorRepository _repository;
+        private readonly IReadColaboradorRepository _readColaboradorRepository;
 
 
         public FindColaboradorService(IReadColaboradorRepository repository)
         {
-            _repository = repository;
+            _readColaboradorRepository = repository;
 
         }
 
@@ -20,17 +21,21 @@ namespace ProjetoColaborador.Services
         public async Task<IList<Colaborador>> FindAll()
         {
 
-            return await _repository.SearchAllColaboradores();
+            return await _readColaboradorRepository.SearchAllColaboradores();
         }
 
 
 
-        public async Task<IList<Colaborador>?> FindWithName(string name)
+        public async Task<Colaborador> FindColaboradorById(long id)
         {
+            var result = await _readColaboradorRepository.FindColaboradorById(id);
 
+            if (result == null)
+            {
+                throw new Exception("Usuário não existe.");
+            }
 
-            return await _repository.SearchColaboradorByName(name);
-
+            return result;
 
         }
 

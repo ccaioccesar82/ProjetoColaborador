@@ -59,22 +59,32 @@ dialog{
     padding: 10px;
 }
 
-#span-create{
-
-    display:none;
-    color: red;
-    font-size: 11px;
-
-}
-
-#span-edit {
+#span-validation-create{
     display: none;
     color: red;
-    font-size: 11px;
+    font-size: 14px;
+}
+
+#span-validation-edit {
+    display: none;
+    color: red;
+    font-size: 14px;
+}
+
+#emailSpan {
+    margin-top: 7px;
+    display: none;
+    color: red;
+    font-size: 10px;
 }
 
 
 .buttons {
     display: flex;
     gap: 10px; /* Espaço entre os botões */
+}
+
+#select-modal{
+
+    margin-top: 10px;
 }

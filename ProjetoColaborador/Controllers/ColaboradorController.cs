@@ -41,19 +41,40 @@ namespace ProjetoColaborador.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Edit(Colaborador colaborador)
+
+        public async Task<IActionResult> Edit(long Id)
         {
             try
             {
-                await _editColaboradorService.Execute(colaborador);
+                var colaboradorResult = await _findColaboradorService.FindColaboradorById(Id);
 
-                return RedirectToAction("Index");
+                return PartialView("_EditColaboradorPartialView", colaboradorResult);
+
             }
             catch (Exception ex)
             {
 
                 return NotFound(ex.Message);
+
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Colaborador colaborador)
+        {
+            try
+            {
+
+                await _editColaboradorService.Execute(colaborador);
+
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
 
             }
         }
