@@ -11,7 +11,8 @@ namespace ProjetoColaborador.Data
 
 
         public static void AddDepedencies(this IServiceCollection service, IConfiguration configuration)
-        {
+        {//Método de extensão para injetar as dependências do database, services e repositories.
+
             addDbContext(service, configuration);
             addRepositories(service);
             addServices(service);
@@ -20,6 +21,8 @@ namespace ProjetoColaborador.Data
 
         private static void addDbContext(IServiceCollection service, IConfiguration configuration)
         {
+            //Tenta se conectar com as informações de connectionstring que estão no appsettingDevelopment.
+            //Obs: é necessário que o Uid e a password sejam trocadas de acordo as informações da sua máquina local.
             string? connectionString = configuration.GetConnectionString("Connection");
 
             MySqlServerVersion serverVersion = new MySqlServerVersion(new Version(8, 0, 42));

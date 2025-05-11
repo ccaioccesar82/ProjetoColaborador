@@ -5,6 +5,9 @@ namespace ProjetoColaborador.Data
 {
     public static class MigrateDatabase
     {
+        
+        // Verifica se o database com o nome "colaboradorgestao" existe na máquina local na primeira vez que o programa for rodado na máquina.
+        //Obs: Somente o schema é criado, sem as tabelas. Após a criação do database, executar o "update-database" para executar as migrations de tabelas.
         public static void EnsureDatabaseIsCreated(string connectionString)
         {
 
