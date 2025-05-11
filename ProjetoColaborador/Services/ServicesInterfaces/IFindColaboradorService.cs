@@ -6,6 +6,6 @@ namespace ProjetoColaborador.Services.ServicesInterfaces
     {
         public Task<IList<Colaborador>> FindAll();
 
-        public Task<Colaborador> FindColaboradorById(long id);
+        public Task<Colaborador> FindColaborador(long id);
     }
 }

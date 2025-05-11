@@ -1,5 +1,4 @@
-﻿using System.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoColaborador.Models.Entities;
 using ProjetoColaborador.Services.ServicesInterfaces;
 
@@ -14,7 +13,7 @@ namespace ProjetoColaborador.Controllers
 
 
         public ColaboradorController(IFindColaboradorService findColaboradorService, IColaboradorCreateService colaboradorCreateService
-            ,IEditColaboradorService editColaboradorService)
+            , IEditColaboradorService editColaboradorService)
         {
             _findColaboradorService = findColaboradorService;
             _colaboradorCreateService = colaboradorCreateService;
@@ -32,13 +31,26 @@ namespace ProjetoColaborador.Controllers
             return View();
         }
 
+
+
         [HttpPost]
         public async Task<IActionResult> Create(Colaborador request)
         {
+            try
+            {
+                await _colaboradorCreateService.Execute(request);
 
-            await _colaboradorCreateService.Execute(request);
+                return RedirectToAction(nameof(Index));
+            }
 
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+
+            }
+
+
         }
 
 
@@ -46,7 +58,7 @@ namespace ProjetoColaborador.Controllers
         {
             try
             {
-                var colaboradorResult = await _findColaboradorService.FindColaboradorById(Id);
+                var colaboradorResult = await _findColaboradorService.FindColaborador(Id);
 
                 return PartialView("_EditColaboradorPartialView", colaboradorResult);
 
@@ -65,10 +77,9 @@ namespace ProjetoColaborador.Controllers
         {
             try
             {
-
                 await _editColaboradorService.Execute(colaborador);
 
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
 
             }
             catch (Exception ex)

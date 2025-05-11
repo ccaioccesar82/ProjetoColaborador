@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <form asp-action="Edit" method="post" class="myform-edit">
-                    <span id="span-validation-edit">Todos os campos precisam ser preenchidos</span>
+                    <span id="span-validation-edit">Todos os campos são obrigatórios</span>
                     <div class="form-group">
                         <input type="hidden" class="form-control inputEdit" id="recipient-name" value="@Model.Id" asp-for="Id">
                     </div>
@@ -47,3 +47,11 @@
         </div>
     </div>
 </div>
+
+
+
+    @section Scripts{
+
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    }

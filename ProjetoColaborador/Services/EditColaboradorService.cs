@@ -1,6 +1,7 @@
 ﻿using ProjetoColaborador.Data.Repositories.Interfaces;
 using ProjetoColaborador.Models.Entities;
 using ProjetoColaborador.Services.ServicesInterfaces;
+using ProjetoColaborador.Services.Validator;
 
 namespace ProjetoColaborador.Services
 {
@@ -19,8 +20,10 @@ namespace ProjetoColaborador.Services
 
         public async Task Execute(Colaborador colaboradorRequest)
         {
+            RequestValidator.ValidateFields(colaboradorRequest);
 
-            var colaboradorResult = await Validate(colaboradorRequest);
+            var colaboradorResult = await _readColaboradorRepository.FindColaboradorById(colaboradorRequest.Id);
+
 
             colaboradorResult.Name = colaboradorRequest.Name;
             colaboradorResult.Email = colaboradorRequest.Email;
@@ -31,26 +34,6 @@ namespace ProjetoColaborador.Services
 
         }
 
-        private async Task<Colaborador> Validate(Colaborador colaboradorRequest)
-        {
-
-            if(string.IsNullOrWhiteSpace(colaboradorRequest.Name) || string.IsNullOrWhiteSpace(colaboradorRequest.Email) ||
-                string.IsNullOrWhiteSpace(colaboradorRequest.Telefone))
-            {
-                throw new Exception("Todos os campos são obrigatórios");
-
-            }
-
-           var result = await _readColaboradorRepository.FindColaboradorById(colaboradorRequest.Id);
-
-            if (result == null)
-            {
-                throw new Exception("Usuário não existe.");
-            }
-
-            return result;
-
-        }
 
     }
 }

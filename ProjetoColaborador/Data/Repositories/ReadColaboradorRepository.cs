@@ -16,10 +16,10 @@ namespace ProjetoColaborador.Data.Repositories
         public async Task<IList<Colaborador>> SearchAllColaboradores() => await _dbContext.Colaboradores.ToListAsync();
 
 
-        public async Task<Colaborador?> FindColaboradorById(long id)
+        public async Task<Colaborador> FindColaboradorById(long id)
         {
 
-           return await _dbContext.Colaboradores.SingleOrDefaultAsync(c => c.Id == id);
+           return await _dbContext.Colaboradores.SingleAsync(c => c.Id == id);
 
         }
 

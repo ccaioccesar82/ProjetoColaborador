@@ -1,5 +1,4 @@
-﻿using ProjetoColaborador.Data.Repositories;
-using ProjetoColaborador.Data.Repositories.Interfaces;
+﻿using ProjetoColaborador.Data.Repositories.Interfaces;
 using ProjetoColaborador.Models.Entities;
 using ProjetoColaborador.Services.ServicesInterfaces;
 
@@ -25,8 +24,7 @@ namespace ProjetoColaborador.Services
         }
 
 
-
-        public async Task<Colaborador> FindColaboradorById(long id)
+        public async Task<Colaborador> FindColaborador(long id)
         {
             var result = await _readColaboradorRepository.FindColaboradorById(id);
 

@@ -1,7 +1,7 @@
-﻿using System.Drawing;
-using ProjetoColaborador.Data.Repositories.Interfaces;
+﻿using ProjetoColaborador.Data.Repositories.Interfaces;
 using ProjetoColaborador.Models.Entities;
 using ProjetoColaborador.Services.ServicesInterfaces;
+using ProjetoColaborador.Services.Validator;
 namespace ProjetoColaborador.Services
 {
     public class ColaboradorCreateService: IColaboradorCreateService
@@ -17,10 +17,10 @@ namespace ProjetoColaborador.Services
 
         public async Task Execute(Colaborador request)
         {
+            RequestValidator.ValidateFields(request);
 
             await _repository.CreateColaborador(request);
           
-
         }
     }
 }
