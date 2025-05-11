@@ -22,13 +22,20 @@ namespace ProjetoColaborador.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _findColaboradorService.FindAll();
+            try
+            {
+                var result = await _findColaboradorService.FindAll();
 
 
 
-            ViewData["ColaboradoresLista"] = result;
+                ViewData["ColaboradoresLista"] = result;
 
-            return View();
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
         }
 
 
