@@ -23,6 +23,10 @@ namespace ProjetoColaborador.Services
             return await _readColaboradorRepository.SearchAllColaboradores();
         }
 
+        public async Task<IList<Cargos>> FindCargos()
+        {
+            return await _readColaboradorRepository.FindAllCargos();
+        }
 
         public async Task<Colaborador> FindColaborador(long id)
         {
@@ -36,6 +40,8 @@ namespace ProjetoColaborador.Services
             return result;
 
         }
+
+
 
     }
 }

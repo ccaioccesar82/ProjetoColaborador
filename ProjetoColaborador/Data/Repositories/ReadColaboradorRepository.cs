@@ -35,5 +35,9 @@ namespace ProjetoColaborador.Data.Repositories
             return result;
         }
 
+        public async Task<IList<Cargos>> FindAllCargos()
+        {
+            return await _dbContext.Cargos.OrderBy(cargos => cargos.Name).ToListAsync();
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace ProjetoColaborador.Data.Repositories.Interfaces
         public Task<IList<Colaborador>?> SearchColaboradorByName(string name);
         public Task<Colaborador> FindColaboradorById(long id);
 
+        public Task<IList<Cargos>> FindAllCargos();
+
     }
 }

@@ -63,7 +63,7 @@ namespace ProjetoColaborador.Migrations
                     { 0, "Programador" },
                     { 1, "Designer" },
                     { 2, "Comercial" },
-                    { 3, "TechLeader" }
+                    { 3, "Tech leader" }
                 });
 
             migrationBuilder.CreateIndex(

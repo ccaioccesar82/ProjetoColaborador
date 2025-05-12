@@ -29,6 +29,7 @@ namespace ProjetoColaborador.Controllers
 
 
                 ViewData["ColaboradoresLista"] = result;
+                ViewData["ListadeCargos"] = await _findColaboradorService.FindCargos();
 
                 return View();
             }
@@ -66,6 +67,8 @@ namespace ProjetoColaborador.Controllers
             try
             {
                 var colaboradorResult = await _findColaboradorService.FindColaborador(Id);
+             
+                ViewData["ListadeCargos"] = await _findColaboradorService.FindCargos();
 
                 return PartialView("_EditColaboradorPartialView", colaboradorResult);
 

@@ -7,5 +7,8 @@ namespace ProjetoColaborador.Services.ServicesInterfaces
         public Task<IList<Colaborador>> FindAll();
 
         public Task<Colaborador> FindColaborador(long id);
+
+
+        public Task<IList<Cargos>> FindCargos();
     }
 }

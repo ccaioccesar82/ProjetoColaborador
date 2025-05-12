@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ProjetoColaborador.Models.Entities.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjetoColaborador.Models.Entities
 {
@@ -13,8 +13,10 @@ namespace ProjetoColaborador.Models.Entities
 
         public string Telefone { get; set; } = string.Empty;
 
-        public CargosId CargoId { get; set; }
-        public Cargos? Cargo { get; set; }
+        public string CargoName { get; set; } = string.Empty;
+
+        public long CargoID { get; set; }
+        public virtual Cargos Cargo { get; set; }
 
     }
 }
