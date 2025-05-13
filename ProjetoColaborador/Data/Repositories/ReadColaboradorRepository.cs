@@ -24,11 +24,11 @@ namespace ProjetoColaborador.Data.Repositories
                               Name = co.Name,
                               Email = co.Email,
                               Telefone = co.Telefone,
-                              Cargo = ca.Name
-
+                              Cargo = ca.Name,
+                              CargoID = ca.Id
                           }).ToListAsync();
 
-            return result;
+                        return result;
   
         }
 
