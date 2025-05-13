@@ -18,7 +18,7 @@ namespace ProjetoColaborador.Services
 
         }
 
-        public async Task Execute(Colaborador colaboradorRequest)
+        public async Task Execute(ColaboradorDTO colaboradorRequest)
         {
             RequestValidator.ValidateFields(colaboradorRequest);
 
@@ -28,7 +28,7 @@ namespace ProjetoColaborador.Services
             colaboradorResult.Name = colaboradorRequest.Name;
             colaboradorResult.Email = colaboradorRequest.Email;
             colaboradorResult.Telefone = colaboradorRequest.Telefone;
-            colaboradorResult.CargoId = colaboradorRequest.CargoId;
+            colaboradorResult.CargoID = colaboradorRequest.CargoID;
 
             await _writeColaboradorRepository.UpdateColaborador(colaboradorResult);
 

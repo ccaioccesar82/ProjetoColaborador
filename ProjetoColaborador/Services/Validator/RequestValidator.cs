@@ -5,7 +5,7 @@ namespace ProjetoColaborador.Services.Validator
     static class RequestValidator
     {
 
-        public static void ValidateFields(Colaborador colaborador)
+        public static void ValidateFields(ColaboradorDTO colaborador)
         {
             if(string.IsNullOrWhiteSpace(colaborador.Name) || string.IsNullOrWhiteSpace(colaborador.Email)
                 || string.IsNullOrWhiteSpace(colaborador.Telefone))

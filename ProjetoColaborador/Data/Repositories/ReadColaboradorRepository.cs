@@ -13,7 +13,24 @@ namespace ProjetoColaborador.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IList<Colaborador>> SearchAllColaboradores() => await _dbContext.Colaboradores.ToListAsync();
+        public async Task<IList<ColaboradorDTO>> SearchAllColaboradores() {
+
+
+            var result = await (from co in _dbContext.Colaboradores
+                          join ca in _dbContext.Cargos on co.CargoID equals ca.Id
+                          select new ColaboradorDTO
+                          {
+                              Id = co.Id,
+                              Name = co.Name,
+                              Email = co.Email,
+                              Telefone = co.Telefone,
+                              Cargo = ca.Name,
+                              CargoID = ca.Id
+                          }).ToListAsync();
+
+                        return result;
+  
+        }
 
 
         public async Task<Colaborador> FindColaboradorById(long id)
@@ -35,5 +52,9 @@ namespace ProjetoColaborador.Data.Repositories
             return result;
         }
 
+        public async Task<IList<Cargos>> FindAllCargos()
+        {
+            return await _dbContext.Cargos.OrderBy(cargos => cargos.Name).ToListAsync();
+        }
     }
 }

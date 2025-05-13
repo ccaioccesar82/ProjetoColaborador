@@ -26,7 +26,7 @@ namespace ProjetoColaborador.Data.Repositories
         {
 
 
-          _dbContext.Colaboradores.Update(colaborador);
+            _dbContext.Colaboradores.Update(colaborador);
 
             await _dbContext.SaveChangesAsync();
         }

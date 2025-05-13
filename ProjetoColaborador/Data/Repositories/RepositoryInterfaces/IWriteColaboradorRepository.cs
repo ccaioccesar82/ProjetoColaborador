@@ -6,6 +6,6 @@ namespace ProjetoColaborador.Data.Repositories.Interfaces
     {
         public Task CreateColaborador(Colaborador colaborador);
 
-        public Task UpdateColaborador(Colaborador colaborador);
+        public Task UpdateColaborador(Colaborador colaboradorResult);
     }
 }

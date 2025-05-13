@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoColaborador.Data;
 
@@ -10,9 +11,11 @@ using ProjetoColaborador.Data;
 namespace ProjetoColaborador.Migrations
 {
     [DbContext(typeof(ColaboradorDbContext))]
-    partial class ColaboradorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250512194141_Migration0000004")]
+    partial class Migration0000004
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,6 +51,10 @@ namespace ProjetoColaborador.Migrations
 
                     b.Property<long>("CargoID")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("CargoName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .IsRequired()

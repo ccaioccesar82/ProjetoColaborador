@@ -29,6 +29,7 @@ namespace ProjetoColaborador.Controllers
 
 
                 ViewData["ColaboradoresLista"] = result;
+                ViewData["ListadeCargos"] = await _findColaboradorService.FindCargos();
 
                 return View();
             }
@@ -41,7 +42,7 @@ namespace ProjetoColaborador.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(Colaborador request)
+        public async Task<IActionResult> Create(ColaboradorDTO request)
         {
             try
             {
@@ -66,6 +67,8 @@ namespace ProjetoColaborador.Controllers
             try
             {
                 var colaboradorResult = await _findColaboradorService.FindColaborador(Id);
+             
+                ViewData["ListadeCargos"] = await _findColaboradorService.FindCargos();
 
                 return PartialView("_EditColaboradorPartialView", colaboradorResult);
 
@@ -80,7 +83,7 @@ namespace ProjetoColaborador.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Colaborador colaborador)
+        public async Task<IActionResult> Edit(ColaboradorDTO colaborador)
         {
             try
             {
