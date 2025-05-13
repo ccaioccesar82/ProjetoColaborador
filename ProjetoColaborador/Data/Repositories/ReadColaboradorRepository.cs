@@ -13,12 +13,12 @@ namespace ProjetoColaborador.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IList<ColaboradorResponseDTO>> SearchAllColaboradores() {
+        public async Task<IList<ColaboradorDTO>> SearchAllColaboradores() {
 
 
             var result = await (from co in _dbContext.Colaboradores
                           join ca in _dbContext.Cargos on co.CargoID equals ca.Id
-                          select new ColaboradorResponseDTO
+                          select new ColaboradorDTO
                           {
                               Id = co.Id,
                               Name = co.Name,

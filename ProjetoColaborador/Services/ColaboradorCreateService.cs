@@ -15,11 +15,20 @@ namespace ProjetoColaborador.Services
             _repository = repository;
         }
 
-        public async Task Execute(Colaborador request)
+        public async Task Execute(ColaboradorDTO request)
         {
             RequestValidator.ValidateFields(request);
 
-            await _repository.CreateColaborador(request);
+            Colaborador domainColaborador = new Colaborador()
+            {
+                Name = request.Name,
+                Email = request.Email,
+                Telefone = request.Telefone,
+                CargoID = request.CargoID,
+            }; 
+
+
+            await _repository.CreateColaborador(domainColaborador);
 
         }
     }

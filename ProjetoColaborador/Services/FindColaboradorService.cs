@@ -17,7 +17,7 @@ namespace ProjetoColaborador.Services
         }
 
 
-        public async Task<IList<ColaboradorResponseDTO>> FindAll()
+        public async Task<IList<ColaboradorDTO>> FindAll()
         {
 
             return await _readColaboradorRepository.SearchAllColaboradores();

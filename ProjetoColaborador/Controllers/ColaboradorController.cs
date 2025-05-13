@@ -42,7 +42,7 @@ namespace ProjetoColaborador.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Create(Colaborador request)
+        public async Task<IActionResult> Create(ColaboradorDTO request)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace ProjetoColaborador.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Colaborador colaborador)
+        public async Task<IActionResult> Edit(ColaboradorDTO colaborador)
         {
             try
             {

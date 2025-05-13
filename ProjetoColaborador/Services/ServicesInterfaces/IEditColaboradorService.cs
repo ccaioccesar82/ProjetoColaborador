@@ -4,6 +4,6 @@ namespace ProjetoColaborador.Services.ServicesInterfaces
 {
     public interface IEditColaboradorService
     {
-        public Task Execute(Colaborador colaborador);
+        public Task Execute(ColaboradorDTO colaborador);
     }
 }

@@ -18,7 +18,7 @@ namespace ProjetoColaborador.Services
 
         }
 
-        public async Task Execute(Colaborador colaboradorRequest)
+        public async Task Execute(ColaboradorDTO colaboradorRequest)
         {
             RequestValidator.ValidateFields(colaboradorRequest);
 
