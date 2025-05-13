@@ -24,7 +24,13 @@ namespace ProjetoColaborador.Services
 
             var colaboradorResult = await _readColaboradorRepository.FindColaboradorById(colaboradorRequest.Id);
 
-            await _writeColaboradorRepository.UpdateColaborador(colaboradorResult, colaboradorRequest);
+
+            colaboradorResult.Name = colaboradorRequest.Name;
+            colaboradorResult.Email = colaboradorRequest.Email;
+            colaboradorResult.Telefone = colaboradorRequest.Telefone;
+            colaboradorResult.CargoID = colaboradorRequest.CargoID;
+
+            await _writeColaboradorRepository.UpdateColaborador(colaboradorResult);
 
         }
 

@@ -20,7 +20,7 @@ namespace ProjetoColaborador.Services
             RequestValidator.ValidateFields(request);
 
             await _repository.CreateColaborador(request);
-          
+
         }
     }
 }

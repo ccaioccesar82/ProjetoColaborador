@@ -12,9 +12,6 @@ namespace ProjetoColaborador.Models.Entities
         public string Email { get; set; } = string.Empty;
 
         public string Telefone { get; set; } = string.Empty;
-
-        public string CargoName { get; set; } = string.Empty;
-
         public long CargoID { get; set; }
         public virtual Cargos Cargo { get; set; }
 

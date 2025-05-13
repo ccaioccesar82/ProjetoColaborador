@@ -4,7 +4,7 @@ namespace ProjetoColaborador.Services.ServicesInterfaces
 {
     public interface IFindColaboradorService
     {
-        public Task<IList<Colaborador>> FindAll();
+       public Task<IList<ColaboradorResponseDTO>> FindAll();
 
         public Task<Colaborador> FindColaborador(long id);
 

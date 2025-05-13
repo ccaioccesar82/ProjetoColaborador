@@ -1,9 +1,9 @@
-﻿@model ProjetoColaborador.Models.Entities.Colaborador;
+﻿@model ProjetoColaborador.Models.Entities.ColaboradorResponseDTO;
 @using ProjetoColaborador.Models.Entities
 
 
 @{
-	IList<Colaborador>? colaboradores = ViewData["ColaboradoresLista"] as IList<Colaborador>;
+	IList<ColaboradorResponseDTO>? colaboradores = ViewData["ColaboradoresLista"] as IList<ColaboradorResponseDTO>;
 
 	IList<Cargos>? allCargos = ViewData["ListadeCargos"] as IList<Cargos>;
 
@@ -28,7 +28,6 @@
 			<th>
 				Id
 			</th>
-
 			<th>
 				Nome
 			</th>
@@ -54,7 +53,7 @@
 				{
 
 					<tr class="colabs">
-						<td>
+						<td class="colaborador name">
 							@Html.DisplayFor(Model => item.Id)
 						</td>
 						<td class="colaborador name">
@@ -67,7 +66,7 @@
 							@Html.DisplayFor(Model => item.Telefone)
 						</td>
 						<td>
-							@Html.DisplayFor(Model => item.CargoName)
+							@Html.DisplayFor(Model => item.Cargo)
 						</td>
 						<td>
 
@@ -103,19 +102,19 @@
 					<span id="span-validation-create">Todos os campos são obrigatórios</span>
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Nome:</label>
-						<input type="text" class="form-control formCreate" id="inputs-required" asp-for="Name">
+						<input type="text" class="form-control formCreate" id="inputs-required" value="Name">
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Email:</label>
-						<input type="text" class="form-control formCreate" id="email-input" id="recipient-name" asp-for="Email">
+						<input type="text" class="form-control formCreate" id="email-input" id="recipient-name" value="Email">
 						<span id="emailSpan">Email inválido</span>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="col-form-label">Telefone:</label>
-						<input type="text" class="form-control formCreate" id="inputs-required" id="recipient-name" asp-for="Telefone">
+						<input type="text" class="form-control formCreate" id="inputs-required" id="recipient-name" value="Telefone">
 					</div>
 					<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Cargo:</label>
-					<select id="select-modal" class="form-select" aria-label="Default select example" asp-for="Cargo.Id">
+					<select id="select-modal" class="form-select" aria-label="Default select example" value="CargoID">
 						@{
 							if(allCargos != null){
 

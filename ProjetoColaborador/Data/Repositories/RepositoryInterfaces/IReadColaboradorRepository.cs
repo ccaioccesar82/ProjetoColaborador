@@ -4,7 +4,7 @@ namespace ProjetoColaborador.Data.Repositories.Interfaces
 {
     public interface IReadColaboradorRepository
     {
-        public Task<IList<Colaborador>> SearchAllColaboradores();
+        Task<IList<ColaboradorResponseDTO>> SearchAllColaboradores();
         public Task<IList<Colaborador>?> SearchColaboradorByName(string name);
         public Task<Colaborador> FindColaboradorById(long id);
 
